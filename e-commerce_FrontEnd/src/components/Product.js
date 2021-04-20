@@ -28,8 +28,6 @@
 				</Card.Body>
  			</Card>
 
- 		
-
  		)
  }
  export default Product;

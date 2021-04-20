@@ -60,7 +60,7 @@
  			}>
  			</i>
  		</span>
- 		<spa>{text && text}</spa>
+ 		<span>{text && text}</span>
  		</div>
 
  		  

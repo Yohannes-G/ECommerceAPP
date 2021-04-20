@@ -7,14 +7,14 @@ const Header = () => {
 		<header>
 			 <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
 			  <Container>
-			 	<LinkContainer to='/'><Navbar.Brand>E Commerce</Navbar.Brand></LinkContainer>
+			 	<LinkContainer to='/'><Navbar.Brand><strong>ኢትዮ ገበያ</strong></Navbar.Brand></LinkContainer>
 				  <Navbar.Toggle aria-controls="basic-navbar-nav" />
 				  <Navbar.Collapse id="basic-navbar-nav">
 				   
 				    <Nav className="ml-auto">
 				      <LinkContainer to='/cart'>
 				      	<Nav.Link >
-				      		<i className="fas fa-shopping-cart">
+				      		<i class Name="fas fa-shopping-cart">
 				      		</i>Cart
 				      	</Nav.Link> 
 				      </LinkContainer>
