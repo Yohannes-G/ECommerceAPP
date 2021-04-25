@@ -1,22 +1,29 @@
  
-const express = require('express')
-const products = require('./data/products')
+import express from 'express'
+import dotenv from 'dotenv'
+import colors from 'colors'
+import connectDB from './connection/database.js'
+import productRoutes from './routes/productRoutes.js'
+//import files from the .env
+dotenv.config()
+
+//connect the database
+connectDB()
+
 const app = express()
-const port = 4000
+ 
+
+
  
 app.get('/', (req, res)=>{
 	res.send('API is running....')
 
 })
 
-app.get('/api/products', (req, res)=>{
-	res.json(products)
-})
- 
-app.get('/api/products/:id', (req, res)=>{
-	res.json(products.find((p) => p._id === req.params.id))
-})
+app.use('/api/products', productRoutes)
+console.log("hello there")
 
-app.listen(port, 
-	console.log(`Hey Jo The Backend is listening at http://localhost:${port}`))
+ 
+const PORT = process.env.PORT || 5000
+app.listen(PORT, console.log(`Hey Jo The Backend is listening at http://localhost:${PORT}`.yellow.bold))
  
