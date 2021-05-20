@@ -6,6 +6,13 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
+import {CartScreen} from './screens/CartScreen'
+import {LoginScreen} from './screens/LoginScreen'
+import {RegisterScreen} from './screens/RegisterScreen'
+import {ProfileScreen} from './screens/ProfileScreen'
+import {ShippingScreen} from './screens/ShippingScreen'
+import {PaymentScreen} from './screens/PaymentScreen'
+import {PlaceOrderScreen} from './screens/PlaceOrderScreen'
 import Language from './components/Language'
 
 function App() {
@@ -16,7 +23,14 @@ function App() {
 	       		<Container>
               <Language/>
 	    	  		<Route path='/' component={HomeScreen} exact/>
+              <Route path='/shipping' component={ShippingScreen}/>
+              <Route path='/payment' component={PaymentScreen}/>
+              <Route path='/placeorder' component={PlaceOrderScreen}/>
+              <Route path='/login' component={LoginScreen} exact/>
+              <Route path='/register' component={RegisterScreen} exact/>
+              <Route path='/profile' component={ProfileScreen} exact/>
               <Route path='/product/:id' component={ProductScreen} exact/>
+              <Route path='/cart/:id?' component={CartScreen}/>
 	    	  	</Container>
 	       </main>
        <Footer />
