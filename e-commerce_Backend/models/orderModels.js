@@ -8,7 +8,7 @@ const orderSchema = mongoose.Schema({
 		required:true,
 		ref: 'User'  //referencing the specific model user
 	},
-	orderItems: [
+	orderItems: [ 
 		{
 			name: {type: String, required:true},
 			qunty: {type: Number, required:true},
