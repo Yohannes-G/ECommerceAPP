@@ -10,7 +10,7 @@ node_modules/
 /coverage
 
 # production
-/build
+/e-commerce_FrontEnd/build
 
 # misc
 .env
