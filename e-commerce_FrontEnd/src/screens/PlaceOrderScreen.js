@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import {Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
 import {useDispatch, useSelector } from 'react-redux'
@@ -11,7 +11,7 @@ export const PlaceOrderScreen = ({history}) => {
 		const dispatch = useDispatch()
 
 		const cart = useSelector((state)=>state.cart)
-		console.log('Hello Cart Screen')
+		/*console.log('Hello Cart Screen')
 		console.log(cart)
 		console.log(cart.cartItems)
 		console.log(cart.shippingAddress)
@@ -19,7 +19,7 @@ export const PlaceOrderScreen = ({history}) => {
 		console.log(cart.itemsPrice)
 		console.log(cart.shippingPrice)
 		console.log(cart.taxPrice)
-		console.log(cart.totalPrice)
+		console.log(cart.totalPrice)*/
 
 		//Calculate Price
 
@@ -38,32 +38,40 @@ export const PlaceOrderScreen = ({history}) => {
 		//create order state is pulled out from the state
 		const orderCreate = useSelector((state)=>state.orderCreate)
 		const { order, success, error } = orderCreate
-		console.log('Hello PlaceOrderScreen 1')
+		console.log('Hello PlaceOrderScreen @@@@@@@@@@@@@@@@1')
 		console.log(orderCreate)
+		console.log(success)
 		console.log(order)
-		console.log('Hello PlaceOrderScreen 1.1')
+		console.log(error)
+		console.log('Hello PlaceOrderScreen ...............1')
  
 		 
 		useEffect(()=>{
+
 			if(success){
 				history.push(`/order/${order._id}`)
 			}
-			// eslint-disable-next-line
-		},[history,success])
 
-		const placeOrderHandler=()=>{
-		console.log('Hello PlaceOrderScreen 2')
-		console.log(cart)
-			dispatch(createOrder({
+			// eslint-disable-next-line
+		},[ dispatch, success ])
+
+		const placeOrderHandler = () => { 
+
+			 				console.log("HELLO ORDER......................................................................")
+				 			console.log(order)
+							 
+						
+							dispatch(createOrder({
 								  orderItems: cart.cartItems,
 								  shippingAddress: cart.shippingAddress,
 								  paymentMethod:cart.paymentMethod,
 								  itemsPrice:cart.itemsPrice,
-								  shippingPrice: cart.shippingPrice,
 								  taxPrice: cart.taxPrice,
+								  shippingPrice: cart.shippingPrice,
 								  totalPrice: cart.totalPrice
-								})
-			)
+								}))
+					
+						
 		}
 		//payment method is not set in the local storage, so it will lost after reloading it
 		return (

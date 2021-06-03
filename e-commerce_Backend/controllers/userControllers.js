@@ -85,7 +85,7 @@ console.log("Hello updateUserProfile.....................................3")
 	//console.log(user)
 	//	console.log("Hello updateUserProfile..............................4")
 
-	const updateUser = await user.save()
+	const updatedUser = await user.save()
 
 	//	console.log(updateUser._id)
 	//	console.log(updateUser.name)
@@ -144,6 +144,11 @@ const registerUser = asyncHandler(async (req, res)=>{
 		}
 })
 
+
+//description  get all user
+//router      GET /api/users
+//access      Private/Admin
+
 const getUsers = asyncHandler(async (req, res)=>{
 	const users = await User.find({})
 	//console.log(products[0]._id)
@@ -152,7 +157,83 @@ const getUsers = asyncHandler(async (req, res)=>{
 })
 
 
+//description  Delete user
+//router      GET /api/users/:id
+//access      Private/Admin
+
+const deleteUser = asyncHandler(async (req, res)=>{
+	const user = await User.findById(req.params.id)
+	
+	if(user){
+
+		await user.remove()
+		res.json({message:'User Removed'})
+
+	}else{
+
+		res.status(404)
+		throw new Error("User Not Found")
+
+	}
+})
 
 
-export { getUsers,authUser,registerUser, getUserProfile , updateUserProfile}
+//description Get user By ID
+//router      GET /api/users/:id
+//access      Private/Admin
+
+const getUserById = asyncHandler(async (req, res)=>{
+	const user = await User.findById(req.params.id).select('-password')
+
+	if(user){
+		res.json(user)	
+	}else{
+		res.status(404)
+		throw new Error('User not Found')
+	}
+	
+})
+
+
+
+//description Update user 
+//router      PUT /api/users/:id
+//access      Private/Admin
+
+const updateUser = asyncHandler(async (req, res)=>{
+ 
+	const user = await User.findById(req.params.id)
+	 
+	if(user){
+		user.name = req.body.name || user.name
+		user.email = req.body.email || user.email
+		user.isAdmin = req.body.isAdmin || user.isAdmin
+ 
+	const updatedUser = await user.save()
+
+		res.json({
+
+		 		_id: updatedUser._id,
+		 		name:updatedUser.name,
+		 		email:updatedUser.email,
+		 		isAdmin:updatedUser.isAdmin,
+		 		 
+		 	})
+ 
+	}else{
+		res.status(404)
+		throw new Error('User not found')
+	}})
+
+
+export { 
+		 authUser,
+		 registerUser, 
+		 getUserProfile , 
+		 updateUserProfile,
+		 deleteUser,
+		 getUsers,
+		 getUserById,
+		 updateUser,
+		 }
 

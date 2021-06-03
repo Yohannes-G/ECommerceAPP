@@ -4,9 +4,7 @@ import { CART_ADD_ITEM, CART_REMOVE_ITEM,CART_SAVE_SHIPPING_ADDRESS,CART_SAVE_PA
 
 export const addToCart = (id, quantity) => async (dispatch, getState) => {
 	const { data } = await axios.get(`/api/products/${id}`)
-	var hello = "Hello cartAction1"
-	//console.log(hello)
-	//console.log(data)
+	 
 	dispatch({
 		type: CART_ADD_ITEM,
 		payload: {
@@ -18,7 +16,7 @@ export const addToCart = (id, quantity) => async (dispatch, getState) => {
 			quantity,
 		}
 	})
-	var hello = "Hello cartAction2"
+	//var hello = "Hello cartAction2"
 	localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
 	//console.log(hello)
 	//console.log(getState().cart.cartItems)

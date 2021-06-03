@@ -5,25 +5,51 @@ import { createStore ,
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { productListReducer,
-		 productDetailsReducer } from './reducers/productReducer'
+		 productDetailsReducer,
+		 productDeleteReducer,
+		 productCreateReducer,
+		 productUpdateReducer,
+		 productReviewCreateReducer,
+		 productTopRatedReducer  } from './reducers/productReducer'
 
 import { cartReducer } from './reducers/cartReducer'
 
 import { userLoginReducer, 
 		 userRegisterReducer,
 		 userDetailsReducer, 
-		 userUpdateProfileReducer } from './reducers/userReducer'
-import {orderCreateReducer} from './reducers/orderReducer.js'
+		 userUpdateProfileReducer,
+		 userListReducer,
+		 userDeleteReducer,
+		 userUpdateReducer} from './reducers/userReducer'
+import { orderCreateReducer,
+	     orderDetailsReducer,
+	     orderPayReducer,
+	 	 orderListMyReducer,
+	 	 orderListReducer,
+	 	 orderDeliverReducer} from './reducers/orderReducer.js'
 
 const reducer = combineReducers({
 	productList: productListReducer,
 	productDetails: productDetailsReducer,
+	productDelete: productDeleteReducer,
+	productCreate: productCreateReducer ,
+	productUpdate: productUpdateReducer,
+	productReviewCreate: productReviewCreateReducer,
+	productTopRated:productTopRatedReducer,
 	cart: cartReducer, 
 	userLogin: userLoginReducer,
 	userRegister: userRegisterReducer,
 	userDetails: userDetailsReducer,
 	userUpdateProfile: userUpdateProfileReducer, 
+	userList: userListReducer,
+	userDelete: userDeleteReducer,
+	userUpdate: userUpdateReducer,
 	orderCreate: orderCreateReducer,
+	orderDetails: orderDetailsReducer,
+	orderPay: orderPayReducer,
+	orderListMy: orderListMyReducer,
+	orderList: orderListReducer,
+	orderDeliver: orderDeliverReducer,
 })//list of reducers will be here
 /*	console.log('userLogin')
 	console.log(userLoginReducer)
@@ -36,7 +62,7 @@ const reducer = combineReducers({
 	console.log('orderCreate')
 	console.log(orderCreateReducer)*/
 
-var hello = "Hello Store1"
+//var hello = "Hello Store1"
 //console.log(hello)
 //console.log(localStorage.getItem('cartItems'))
 
@@ -52,8 +78,9 @@ const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(
 //get the user shippingAddress from local storage
 const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ? JSON.parse(
 		localStorage.getItem('shippingAddress')): {}
-
-var hello = "Hello userInfoFromStorage"
+console.log("this is productTopRated store")
+console.log(productTopRatedReducer)
+//var hello = "Hello userInfoFromStorage"
 //console.log(hello)
 //console.log(userInfoFromStorage)
 
@@ -68,7 +95,7 @@ const initialState = {
 					userLogin: { userInfo: userInfoFromStorage },
 				} //set of initial states 
 
-var hello = "Hello Store2"
+//var hello = "Hello Store2"
 //console.log(hello)
 //console.log(initialState.userLogin.userInfo)
 

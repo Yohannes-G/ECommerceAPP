@@ -5,13 +5,13 @@ import { CART_ADD_ITEM,
 
 
 export const cartReducer = (state = {cartItems: [], shippingAddress: {} }, action) => {
-	var hello = "Hello cartReducer1"
+	//var hello = "Hello cartReducer1"
 	//console.log(hello)
 	//console.log(state.cartItems)
 	switch(action.type){
 		case CART_ADD_ITEM:
 			const item = action.payload
-			var hello = "Hello cartReducer2"
+		//	var hello = "Hello cartReducer2"
 			//console.log(hello)
 			//console.log(item)
 			//console.log(hello)

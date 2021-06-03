@@ -37,7 +37,7 @@ const submitHandler =(event)=>{
 				<Form onSubmit={submitHandler}>
 						<Form.Group controlId='address'>
 						<Form.Label>Address</Form.Label>
-						<Form.Control type='text'
+						<Form.Control type='address'
 									   placeholder='Enter address'
 									    value={address}
 									    required
